@@ -13,8 +13,13 @@ class ToolRegistry:
     def execute_tool(self, name: str, args: Dict[str, Any]):
         tool = self.get_tool(name)
         if not tool:
-            return f"Error: tool '{name}' not found."
-        return tool.execute(args)
+            return f"Error: requested tool '{name}' not found."
+        
+        try:
+            return tool.execute(args)
+        except Exception as e:
+            print(f"[Tool Execution Error] {name}: {e}")
+            return f"Error: tool '{name}' failed during execution."
 
     def get_all_declarations(self):
         return [tool.get_declaration() for tool in self._tools.values()]

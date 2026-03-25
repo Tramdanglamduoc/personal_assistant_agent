@@ -52,10 +52,15 @@ class Agent:
                         }]
                     })
 
-                    final_response = self.model.generate_content(
-                        self.memory.get_history()
-                    )
+                    try:
+                        final_response = self.model.generate_content(
+                            self.memory.get_history()
+                        )
 
+                    except Exception as e:
+                        print(f"[Gemini Final Response Error] {e}")
+                        return "Sorry, the AI service is temporarily unavailable."
+                    
                     final_text = self._extract_text_response(final_response)
                     self.memory.add_model_message(final_text)
                     return final_text
@@ -65,7 +70,8 @@ class Agent:
             return direct_text
 
         except Exception as e:
-            return f"Agent error: {str(e)}"
+            print(f"[Agent Error] {e}")
+            return "Sorry, the AI service is temporarily unavailable."
 
     def _extract_text_response(self, response) -> str:
         try:

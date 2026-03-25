@@ -1,3 +1,6 @@
+from typing import Any, Dict
+from tools.base_tool import BaseTool
+
 class CalculatorTool(BaseTool):
     @property
     def name(self) -> str:
@@ -5,11 +8,22 @@ class CalculatorTool(BaseTool):
 
     def execute(self, args):
         expression = args.get("expression", "")
+
+        if expression is None:
+            return "Error: invalid arguments for calculator."
+
+        if not isinstance(expression, str):
+            return "Error: invalid arguments for calculator."
+
+        expression = expression.strip()
+        if not expression:
+            return "Error: invalid arguments for calculator."
+
         try:
             result = eval(expression, {"__builtins__": {}})
             return str(result)
         except Exception as e:
-            return f"Calculator error: {str(e)}"
+            return f"Calculator error: {str(e)} - invalid mathematical expression."
 
     def get_declaration(self):
         return {
