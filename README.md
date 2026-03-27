@@ -210,6 +210,22 @@ Example output:
 
 **Note: make sure the file `tests/notes.txt` exists and contains sample text.**
 
+### Unit Test: Run time tool checks
+```powershell
+python -m tests.test_time_tool
+```
+
+This test checks:
+- valid timezone handling
+- default timezone behavior (UTC)
+- handling of invalid timezone input
+
+Example output:
+- Current time in Europe/Riga: <dynamic>
+- Current time in UTC: <dynamic>
+- Time error: unknown timezone 'Mars/Unknown'. Make sure 'tzdata' is installed (pip install tzdata).
+
+**Note: the time values will change depending on when the test is executed.**
 
 ## Key Design Concepts
 - ReAct Pattern (Reason–Act–Observe)
