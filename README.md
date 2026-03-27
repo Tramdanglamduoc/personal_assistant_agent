@@ -195,12 +195,18 @@ This test checks:
 - clearing memory correctly
 
 Example output:
-- === Test 1: Initial history ===
+```powershell
+=== Test 1: Initial history ===
 []
-- === Test 2: Add user and model messages ===
+```
+```powershell
+=== Test 2: Add user and model messages ===
 [{'role': 'user', 'parts': ['Hello']}, {'role': 'model', 'parts': ['Hi there!']}, {'role': 'user', 'parts': ['What is my name?']}, {'role': 'model', 'parts': ['I do not know your name yet.']}]
-- === Test 3: Clear memory ===
+```
+```powershell
+=== Test 3: Clear memory ===
 []
+```
 
 **Notes:**
 **- The conversation history is stored as a list of message objects.**
@@ -223,17 +229,28 @@ This test checks:
 - handling non-existent tools
 
 Example output:
-- === Test 1: Register tools ===
+```powershell
+=== Test 1: Register tools ===
 Registered calculator and time tools.
-- === Test 2: Get tool by name ===
+```
+
+```powershell
+=== Test 2: Get tool by name ===
 calculator -> <CalculatorTool object>
 time -> <TimeTool object>
 weather -> None
-- === Test 3: Execute tool by name === <br>
+```
+
+```powershell
+=== Test 3: Execute tool by name === <br>
 15 <br>
 Current time in Europe/Riga: <dynamic> <br>
-- === Test 4: Execute non-existent tool ===
+```
+
+```powershell
+=== Test 4: Execute non-existent tool ===
 Error: requested tool 'weather' not found.
+```
 
 **Notes:**
 **- The object memory addresses (e.g., <CalculatorTool object at ...>) may differ each run.**
@@ -257,11 +274,26 @@ This test runs sample checks for:
 - TranslatorTool
 
 Example output:
-- 19
-- Contents of 'tests/notes.txt': Hello, this txt is for test_tools.
-- Current time in Europe/Riga: <dynamic>
-- Current weather in Riga, Latvia: <dynamic>
-- Xin chào
+```powershell
+19
+```
+
+```powershell
+Contents of 'tests/notes.txt': 
+Hello, this txt is for test_tools.
+```
+
+```powershell
+Current time in Europe/Riga: <dynamic>
+```
+
+```powershell
+Current weather in Riga, Latvia: <dynamic>
+```
+
+```powershell
+Xin chào
+```
 
 **Note: the time and weather values may change depending on when the test is executed.**
 
@@ -279,10 +311,21 @@ This test checks:
 - invalid mathematical expression handling
 
 Example output:
-- 14
-- Error: invalid arguments for calculator.
-- Error: invalid arguments for calculator.
-- Calculator error: invalid syntax (<string>, line 1) - invalid mathematical expression.
+```powershell
+14
+```
+
+```powershell
+Error: invalid arguments for calculator.
+```
+
+```powershell
+Error: invalid arguments for calculator.
+```
+
+```powershell
+Calculator error: invalid syntax (<string>, line 1) - invalid mathematical expression.
+```
 
 ---
 
@@ -299,11 +342,26 @@ This test checks:
 - rejecting unsupported file extensions
 
 Example output:
-- Contents of 'tests/notes.txt': Hello, this txt is for test_tools.
-- Error: file 'tests/abcxyz.txt' does not exist.
-- Error: invalid arguments for file reader.
-- Error: invalid arguments for file reader.
-- Error: unsupported file type. Supported types are .csv, .json, .md, .txt.
+```powershell
+Contents of 'tests/notes.txt': 
+Hello, this txt is for test_tools.
+```
+
+```powershell
+Error: file 'tests/abcxyz.txt' does not exist.
+```
+
+```powershell
+Error: invalid arguments for file reader.
+```
+
+```powershell
+Error: invalid arguments for file reader.
+```
+
+```powershell
+Error: unsupported file type. Supported types are .csv, .json, .md, .txt.
+```
 
 **Note: make sure the file `tests/notes.txt` exists and contains sample text.**
 
@@ -320,9 +378,17 @@ This test checks:
 - handling of invalid timezone input
 
 Example output:
-- Current time in Europe/Riga: <dynamic>
-- Current time in UTC: <dynamic>
-- Time error: unknown timezone 'Mars/Unknown'. Make sure 'tzdata' is installed (pip install tzdata).
+```powershell
+Current time in Europe/Riga: <dynamic>
+```
+
+```powershell
+Current time in UTC: <dynamic>
+```
+
+```powershell
+Time error: unknown timezone 'Mars/Unknown'. Make sure 'tzdata' is installed (pip install tzdata).
+```
 
 **Note: the time values will change depending on when the test is executed.**
 
@@ -339,9 +405,17 @@ This test checks:
 - handling of non-existent or invalid city names
 
 Example output:
-- Current weather in Riga, Latvia: <dynamic>
-- Weather error: 'city' is required.
-- Weather error: could not find location 'asdkjasdkjasd'.
+```powershell
+Current weather in Riga, Latvia: <dynamic>
+```
+
+```powershell
+Weather error: 'city' is required.
+```
+ 
+```powershell
+Weather error: could not find location 'asdkjasdkjasd'.
+```
 
 **Note: the weather values (temperature, wind speed, and description) may change depending on when the test is executed and API responses.**
 
@@ -362,21 +436,30 @@ This test checks:
 - Latvian → English translation
 
 Example output:
-- === Test 1: Valid translation (English to Vietnamese) === 
+```powershell
+=== Test 1: Valid translation (English to Vietnamese) === 
 Chào buổi sáng, hôm nay bạn thế nào?
+```
 
-
-- === Test 2: Missing target language ===
+```powershell
+=== Test 2: Missing target language ===
 Translation error: 'target_lang' is required.
+```
 
-- === Test 3: Empty text ===
+```powershell
+=== Test 3: Empty text ===
 Translation error: 'text' is required.
+```
 
-- === Test 4: English to Latvian ===
+```powershell
+=== Test 4: English to Latvian ===
 Labrīt
+```
 
-- === Test 5: Latvian to English ===
+```powershell
+=== Test 5: Latvian to English ===
 Good morning
+```
 
 **Notes:**
 **The translation results may vary depending on the external API. Minor differences in translated text are expected.**
