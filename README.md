@@ -209,10 +209,10 @@ Example output:
 ```
 
 **Notes:**
-**- The conversation history is stored as a list of message objects.**
-**- Each message follows the format: {"role": "...", "parts": ["..."]}.**
-**- The order of messages must be preserved.**
-**- The goal of this test is to verify correct memory behavior inside the agent.**
+- The conversation history is stored as a list of message objects.
+- Each message follows the format: {"role": "...", "parts": ["..."]}.
+- The order of messages must be preserved.
+- The goal of this test is to verify correct memory behavior inside the agent.
 
 <br>
 <br>
@@ -253,9 +253,9 @@ Error: requested tool 'weather' not found.
 ```
 
 **Notes:**
-**- The object memory addresses (e.g., <CalculatorTool object at ...>) may differ each run.**
-**- The time value is dynamic and will change depending on when the test is executed.**
-**- The goal of this test is to verify correct tool management behavior inside the registry.**
+- The object memory addresses (e.g., <CalculatorTool object at ...>) may differ each run.
+- The time value is dynamic and will change depending on when the test is executed.
+- The goal of this test is to verify correct tool management behavior inside the registry.
 
 <br>
 <br>
@@ -462,11 +462,11 @@ Good morning
 ```
 
 **Notes:**
-**The translation results may vary depending on the external API. Minor differences in translated text are expected.**
-**The main goal is to verify:**
-**- The tool runs without errors**
-**- Proper error handling is implemented**
-**- Valid translations return non-empty results**
+The translation results may vary depending on the external API. Minor differences in translated text are expected.
+The main goal is to verify:
+- The tool runs without errors
+- Proper error handling is implemented**
+- Valid translations return non-empty results
 
 ## Key Design Concepts
 - ReAct Pattern (Reason–Act–Observe)
