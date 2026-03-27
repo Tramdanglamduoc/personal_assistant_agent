@@ -215,7 +215,6 @@ Example output:
 - The goal of this test is to verify correct memory behavior inside the agent.
 
 <br>
-<br>
 
 ### Manual Test: Run ToolRegistry checks
 ```powershell
@@ -242,9 +241,9 @@ weather -> None
 ```
 
 ```powershell
-=== Test 3: Execute tool by name === <br>
-15 <br>
-Current time in Europe/Riga: <dynamic> <br>
+=== Test 3: Execute tool by name === 
+15 
+Current time in Europe/Riga: <dynamic> 
 ```
 
 ```powershell
@@ -257,7 +256,6 @@ Error: requested tool 'weather' not found.
 - The time value is dynamic and will change depending on when the test is executed.
 - The goal of this test is to verify correct tool management behavior inside the registry.
 
-<br>
 <br>
 
 ### Manual Test: Run all basic tool checks
