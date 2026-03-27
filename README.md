@@ -24,6 +24,18 @@ Gemini generates final response
 Memory stores the final response
 ```
 
+## Setup Instructions
+
+### Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+`requirements.txt` includes `tzdata`.
+
+This is required on some systems (especially Windows), where `Python’s zoneinfo module` depends on external timezone data.
+
+
 ## Step-by-Step Explanation
 ### 1. User Input
 

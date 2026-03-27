@@ -23,7 +23,8 @@ class TimeTool(BaseTool):
             return f"Current time in {timezone_name}: {formatted_time}"
 
         except ZoneInfoNotFoundError:
-            return f"Time error: unknown timezone '{timezone_name}'."
+            return (f"Time error: unknown timezone '{timezone_name}'. "
+                    "Make sure 'tzdata' is installed (pip install tzdata).")
         except Exception as e:
             return f"Time error: {str(e)}"
 
