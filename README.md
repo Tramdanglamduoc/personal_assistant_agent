@@ -31,10 +31,41 @@ Memory stores the final response
 pip install -r requirements.txt
 ```
 
-`requirements.txt` includes `tzdata`.
+`requirements.txt` includes:
 
-This is required on some systems (especially Windows), where `Python’s zoneinfo module` depends on external timezone data.
+- `requests` 
+Used to send HTTP requests to external web services or APIs. In this project, it is useful for tools that need to communicate with online services, such as weather APIs or other external endpoints.
 
+- - `google-genai`  
+Official Google Gen AI SDK for accessing Gemini models from Python. In this project, it is used by the `TranslatorTool` to send text to the Gemini API and receive translated output.
+
+- `tzdata`.
+Provides time zone database support. This is required on some systems (especially Windows), where `Python’s zoneinfo module` depends on external timezone data.
+
+## Gemini API Key Setup (Windows PowerShell)
+
+You must set the `GEMINI_API_KEY` environment variable before running the main program.
+
+### Set the API key permanently
+Run this once in PowerShell:
+
+```powershell
+set GEMINI_API_KEY "YOUR_API_KEY"
+```
+
+**Notes: "YOUR_API_KEY" can get Gemini API key from Google AI Studio**
+
+Then do all of the following
+- Close all VS Code windows.
+- Open VS Code again.
+- Open a new terminal.
+
+Check whether the key is available:
+```powershell
+echo $env:GEMINI_API_KEY
+```
+
+If the terminal prints your API key, then the key is now available for future terminals.
 
 ## Step-by-Step Explanation
 ### 1. User Input
@@ -243,6 +274,43 @@ Example output:
 - Weather error: could not find location 'asdkjasdkjasd'.
 
 **Note: the weather values (temperature, wind speed, and description) may change depending on when the test is executed and API responses.**
+
+### Manual Test: Run TranslatorTool test
+```powershell
+python -m tests.test_translator_tool
+```
+
+Test cases
+
+This test checks:
+- Valid translation (English → Vietnamese)
+- Missing target language
+- Empty text input
+- English → Latvian translation
+- Latvian → English translation
+
+Example output:
+=== Test 1: Valid translation (English to Vietnamese) ===
+<translated text>
+
+=== Test 2: Missing target language ===
+Translation error: 'target_lang' is required.
+
+=== Test 3: Empty text ===
+Translation error: 'text' is required.
+
+=== Test 4: English to Latvian ===
+Labrīt
+
+=== Test 5: Latvian to English ===
+Good morning
+
+**Notes:**
+**The translation results may vary depending on the external API. Minor differences in translated text are expected.**
+**The main goal is to verify:**
+**- The tool runs without errors**
+**- Proper error handling is implemented**
+**- Valid translations return non-empty results**
 
 ## Key Design Concepts
 - ReAct Pattern (Reason–Act–Observe)

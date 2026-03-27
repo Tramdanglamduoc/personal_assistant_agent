@@ -1,1 +1,4 @@
 tzdata
+requests
+google-genai
+google-generativeai
