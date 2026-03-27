@@ -172,7 +172,7 @@ Example output:
 
 **Note: the time and weather values may change depending on when the test is executed.**
 
-### Unit Test: Run calculator-only checks
+### Manual Test: Run calculator-only checks
 ```powershell
 python -m tests.test_calculator_tool
 ```
@@ -189,7 +189,7 @@ Example output:
 - Error: invalid arguments for calculator.
 - Calculator error: invalid syntax (<string>, line 1) - invalid mathematical expression.
 
-### Unit Test: Run file reader checks
+### Manual Test: Run file reader checks
 ```powershell
 python -m tests.test_file_reader_tool
 ```
@@ -210,7 +210,7 @@ Example output:
 
 **Note: make sure the file `tests/notes.txt` exists and contains sample text.**
 
-### Unit Test: Run time tool checks
+### Manual Test: Run time tool checks
 ```powershell
 python -m tests.test_time_tool
 ```
@@ -226,6 +226,23 @@ Example output:
 - Time error: unknown timezone 'Mars/Unknown'. Make sure 'tzdata' is installed (pip install tzdata).
 
 **Note: the time values will change depending on when the test is executed.**
+
+### Manual Test: Run weather tool checks
+```powershell
+python -m tests.test_weather_tool
+```
+
+This test checks:
+- valid city input (e.g., "Riga")
+- handling of empty city input
+- handling of non-existent or invalid city names
+
+Example output:
+- Current weather in Riga, Latvia: <dynamic>
+- Weather error: 'city' is required.
+- Weather error: could not find location 'asdkjasdkjasd'.
+
+**Note: the weather values (temperature, wind speed, and description) may change depending on when the test is executed and API responses.**
 
 ## Key Design Concepts
 - ReAct Pattern (Reason–Act–Observe)
