@@ -172,7 +172,7 @@ Example output:
 
 **Note: the time and weather values may change depending on when the test is executed.**
 
-### Run calculator-only checks
+### Unit Test: Run calculator-only checks
 ```powershell
 python -m tests.test_calculator_tool
 ```
@@ -188,6 +188,28 @@ Example output:
 - Error: invalid arguments for calculator.
 - Error: invalid arguments for calculator.
 - Calculator error: invalid syntax (<string>, line 1) - invalid mathematical expression.
+
+### Unit Test: Run file reader checks
+```powershell
+python -m tests.test_file_reader_tool
+```
+
+This test checks:
+- reading a valid text file
+- handling non-existing file paths
+- handling empty file path input
+- handling invalid data types
+- rejecting unsupported file extensions
+
+Example output:
+- Contents of 'tests/notes.txt': Hello, this txt is for test_tools.
+- Error: file 'tests/abcxyz.txt' does not exist.
+- Error: invalid arguments for file reader.
+- Error: invalid arguments for file reader.
+- Error: unsupported file type. Supported types are .csv, .json, .md, .txt.
+
+**Note: make sure the file `tests/notes.txt` exists and contains sample text.**
+
 
 ## Key Design Concepts
 - ReAct Pattern (Reason–Act–Observe)
