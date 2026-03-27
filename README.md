@@ -145,6 +145,50 @@ Flow:
 2. Tool returns weather data
 3. Gemini generates final answer using tool result
 
+
+## Running tests
+
+This project includes simple manual test files for checking whether the implemented tools work correctly.
+
+### Run all basic tool checks
+
+```powershell
+python -m tests.test_tools
+```
+
+This test runs sample checks for:
+- CalculatorTool
+- FileReaderTool
+- TimeTool
+- WeatherTool
+- TranslatorTool
+
+Example output:
+- 19
+- Contents of 'tests/notes.txt': Hello, this txt is for test_tools.
+- Current time in Europe/Riga: <dynamic>
+- Current weather in Riga, Latvia: <dynamic>
+- Xin chào
+
+**Note: the time and weather values may change depending on when the test is executed.**
+
+### Run calculator-only checks
+```powershell
+python -m tests.test_calculator_tool
+```
+
+This test checks:
+- valid expression handling
+- missing argument handling
+- empty expression handling
+- invalid mathematical expression handling
+
+Example output:
+- 14
+- Error: invalid arguments for calculator.
+- Error: invalid arguments for calculator.
+- Calculator error: invalid syntax (<string>, line 1) - invalid mathematical expression.
+
 ## Key Design Concepts
 - ReAct Pattern (Reason–Act–Observe)
 - Tool-based architecture
