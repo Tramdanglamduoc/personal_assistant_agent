@@ -181,6 +181,8 @@ Flow:
 
 This project includes simple manual test files for checking whether the implemented tools work correctly.
 
+---
+
 ### Run all basic tool checks
 
 ```powershell
@@ -203,6 +205,8 @@ Example output:
 
 **Note: the time and weather values may change depending on when the test is executed.**
 
+---
+
 ### Manual Test: Run calculator-only checks
 ```powershell
 python -m tests.test_calculator_tool
@@ -219,6 +223,8 @@ Example output:
 - Error: invalid arguments for calculator.
 - Error: invalid arguments for calculator.
 - Calculator error: invalid syntax (<string>, line 1) - invalid mathematical expression.
+
+---
 
 ### Manual Test: Run file reader checks
 ```powershell
@@ -241,6 +247,8 @@ Example output:
 
 **Note: make sure the file `tests/notes.txt` exists and contains sample text.**
 
+---
+
 ### Manual Test: Run time tool checks
 ```powershell
 python -m tests.test_time_tool
@@ -257,6 +265,8 @@ Example output:
 - Time error: unknown timezone 'Mars/Unknown'. Make sure 'tzdata' is installed (pip install tzdata).
 
 **Note: the time values will change depending on when the test is executed.**
+
+---
 
 ### Manual Test: Run weather tool checks
 ```powershell
@@ -275,6 +285,8 @@ Example output:
 
 **Note: the weather values (temperature, wind speed, and description) may change depending on when the test is executed and API responses.**
 
+---
+
 ### Manual Test: Run TranslatorTool test
 ```powershell
 python -m tests.test_translator_tool
@@ -290,19 +302,20 @@ This test checks:
 - Latvian → English translation
 
 Example output:
-=== Test 1: Valid translation (English to Vietnamese) ===
-<translated text>
+- === Test 1: Valid translation (English to Vietnamese) === 
+Chào buổi sáng, hôm nay bạn thế nào?
 
-=== Test 2: Missing target language ===
+
+- === Test 2: Missing target language ===
 Translation error: 'target_lang' is required.
 
-=== Test 3: Empty text ===
+- === Test 3: Empty text ===
 Translation error: 'text' is required.
 
-=== Test 4: English to Latvian ===
+- === Test 4: English to Latvian ===
 Labrīt
 
-=== Test 5: Latvian to English ===
+- === Test 5: Latvian to English ===
 Good morning
 
 **Notes:**
