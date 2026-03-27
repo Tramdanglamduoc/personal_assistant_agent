@@ -181,7 +181,35 @@ Flow:
 
 This project includes simple manual test files for checking whether the implemented tools work correctly.
 
----
+
+### Manual Test: Run MemoryManager checks
+```powershell
+python -m tests.test_memory
+```
+
+This test checks:
+- initial memory state (should be empty)
+- adding user messages
+- adding model messages
+- preserving conversation order
+- clearing memory correctly
+
+Example output:
+- === Test 1: Initial history ===
+[]
+- === Test 2: Add user and model messages ===
+[{'role': 'user', 'parts': ['Hello']}, {'role': 'model', 'parts': ['Hi there!']}, {'role': 'user', 'parts': ['What is my name?']}, {'role': 'model', 'parts': ['I do not know your name yet.']}]
+- === Test 3: Clear memory ===
+[]
+
+**Notes:**
+**- The conversation history is stored as a list of message objects.**
+**- Each message follows the format: {"role": "...", "parts": ["..."]}.**
+**- The order of messages must be preserved.**
+**- The goal of this test is to verify correct memory behavior inside the agent.**
+
+<br>
+<br>
 
 ### Manual Test: Run ToolRegistry checks
 ```powershell
