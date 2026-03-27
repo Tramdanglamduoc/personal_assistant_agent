@@ -183,7 +183,39 @@ This project includes simple manual test files for checking whether the implemen
 
 ---
 
-### Run all basic tool checks
+### Manual Test: Run ToolRegistry checks
+```powershell
+python -m tests.test_registry
+```
+
+This test checks:
+- registering tools correctly
+- retrieving tools by name
+- executing tools by name
+- handling non-existent tools
+
+Example output:
+- === Test 1: Register tools ===
+Registered calculator and time tools.
+- === Test 2: Get tool by name ===
+calculator -> <CalculatorTool object>
+time -> <TimeTool object>
+weather -> None
+- === Test 3: Execute tool by name === <br>
+15 <br>
+Current time in Europe/Riga: <dynamic> <br>
+- === Test 4: Execute non-existent tool ===
+Error: requested tool 'weather' not found.
+
+**Notes:**
+**- The object memory addresses (e.g., <CalculatorTool object at ...>) may differ each run.**
+**- The time value is dynamic and will change depending on when the test is executed.**
+**- The goal of this test is to verify correct tool management behavior inside the registry.**
+
+<br>
+<br>
+
+### Manual Test: Run all basic tool checks
 
 ```powershell
 python -m tests.test_tools
