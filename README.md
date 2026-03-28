@@ -103,7 +103,7 @@ Agent: The current time in Tokyo is ...
 You: Translate "How are you?" to Vietnamese.
 Agent: Bạn khỏe không?
 
-You: Read notes.txt
+You: Read tests/notes.txt
 Agent: <file contents here>
 ```
 
