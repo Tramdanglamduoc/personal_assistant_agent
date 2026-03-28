@@ -24,7 +24,7 @@ class Agent:
             tools=declarations
         )
 
-    # 👇 thêm 2 method này
+
     def add_observer(self, observer: AgentObserver) -> None:
         self._observers.append(observer)
 
@@ -46,12 +46,11 @@ class Agent:
                     tool_name = part.function_call.name
                     tool_args = dict(part.function_call.args)
 
-                    # 👇 notify khi tool được gọi
                     self._notify("tool_called", {"tool_name": tool_name, "args": tool_args})
 
                     tool_result = self.registry.execute_tool(tool_name, tool_args)
 
-                    # 👇 notify khi có kết quả tool
+
                     self._notify("tool_result", {"tool_name": tool_name, "result": tool_result})
 
                     self.memory.history.append({"role": "model", "parts": [part]})
@@ -74,7 +73,6 @@ class Agent:
                     final_text = self._extract_text_response(final_response)
                     self.memory.add_model_message(final_text)
 
-                    # 👇 notify khi có response cuối
                     self._notify("response_generated", {"text": final_text})
                     return final_text
 
