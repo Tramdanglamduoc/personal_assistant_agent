@@ -67,6 +67,80 @@ echo $env:GEMINI_API_KEY
 
 If the terminal prints your API key, then the key is now available for future terminals.
 
+## Running the CLI Application
+
+To start the Personal Assistant Agent, run:
+```powershell
+python main.py
+```
+
+If everything is set up correctly, you will see:
+
+```powershell
+Personal Assistant Agent started. Type 'exit' to quit.
+You:
+```
+
+This means the application is running and waiting for your input.
+
+## How to Interact with the Agent
+
+You can type messages directly into the terminal after the `You:` prompt.
+
+The agent will process your input and respond accordingly.
+
+### Example interaction
+```powershell
+You: Hello
+Agent: Hello! How can I help you today?
+
+You: What is 15 * 9?
+Agent: 15 * 9 is 135.
+
+You: What time is it in Asia/Tokyo?
+Agent: The current time in Tokyo is ...
+
+You: Translate "How are you?" to Vietnamese.
+Agent: Bạn khỏe không?
+
+You: Read notes.txt
+Agent: <file contents here>
+```
+
+## Supported Capabilities
+
+The agent can automatically decide when to use tools:
+
+- Mathematical calculations → CalculatorTool
+- Time queries → TimeTool
+- Weather queries → WeatherTool
+- Translation → TranslatorTool
+- File reading → FileReaderTool
+
+You do not need to call tools manually - just type natural language.
+
+## How to Exit the Application
+
+To stop the application, type:
+```powershell
+exit
+```
+
+Then press `Enter`.
+
+Expected output:
+```powershell
+You: exit
+Agent: Goodbye!
+```
+
+**Notes**
+- The application runs in a continuous loop and will not stop automatically.
+- It only exits when the user types exit.
+- API rate limits may apply when using the Gemini API (free tier).
+
+The program will then terminate and return to the terminal.
+
 ## Step-by-Step Explanation
 ### 1. User Input
 
@@ -162,6 +236,8 @@ When tools are used:
 1. First call → decide whether to use a tool
 2. Tool executes
 3. Second call → generate final answer
+
+This process may increase response time slightly when tools are involved.
 
 ## Example: Weather Query
 
