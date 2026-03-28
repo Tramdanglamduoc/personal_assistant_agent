@@ -8,6 +8,8 @@ from tools.weather_tool import WeatherTool
 from tools.translator_tool import TranslatorTool
 from tools.file_reader_tool import FileReaderTool
 
+from utils.observer import LoggingObserver, TokenUsageObserver   # 👈 thêm
+
 
 def build_agent() -> Agent:
     memory = MemoryManager()
@@ -19,11 +21,17 @@ def build_agent() -> Agent:
     registry.register(TranslatorTool())
     registry.register(FileReaderTool())
 
-    return Agent(memory=memory, registry=registry)
+    agent = Agent(memory=memory, registry=registry)
+
+    agent.add_observer(LoggingObserver())
+    token_observer = TokenUsageObserver()
+    agent.add_observer(token_observer)
+
+    return agent, token_observer   
 
 
 def main():
-    agent = build_agent()
+    agent, token_observer = build_agent()
 
     print("Personal Assistant Agent started. Type 'exit' to quit.")
 
@@ -32,6 +40,7 @@ def main():
 
         if user_input.lower() == "exit":
             print("Agent: Goodbye!")
+            print(token_observer.get_summary())   
             break
 
         if not user_input:
