@@ -4,7 +4,7 @@ from typing import List
 from config import GEMINI_API_KEY, MODEL_NAME
 from agent.memory import MemoryManager
 from agent.registry import ToolRegistry
-from utils.observer import AgentObserver   # 👈 thêm
+from utils.observer import AgentObserver   
 
 
 class Agent:
@@ -14,7 +14,7 @@ class Agent:
 
         self.memory = memory
         self.registry = registry
-        self._observers: List[AgentObserver] = []   # 👈 thêm
+        self._observers: List[AgentObserver] = []   
 
         genai.configure(api_key=GEMINI_API_KEY)
 
@@ -68,7 +68,7 @@ class Agent:
                     try:
                         final_response = self.model.generate_content(self.memory.get_history())
                     except Exception as e:
-                        self._notify("error_occurred", {"message": str(e)})   # 👈
+                        self._notify("error_occurred", {"message": str(e)})   
                         return "Sorry, the AI service is temporarily unavailable."
 
                     final_text = self._extract_text_response(final_response)
@@ -80,11 +80,11 @@ class Agent:
 
             direct_text = self._extract_text_response(response)
             self.memory.add_model_message(direct_text)
-            self._notify("response_generated", {"text": direct_text})   # 👈
+            self._notify("response_generated", {"text": direct_text})   
             return direct_text
 
         except Exception as e:
-            self._notify("error_occurred", {"message": str(e)})   # 👈
+            self._notify("error_occurred", {"message": str(e)})   
             return "Sorry, the AI service is temporarily unavailable."
 
     def _extract_text_response(self, response) -> str:

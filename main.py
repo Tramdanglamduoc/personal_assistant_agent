@@ -8,7 +8,7 @@ from tools.weather_tool import WeatherTool
 from tools.translator_tool import TranslatorTool
 from tools.file_reader_tool import FileReaderTool
 
-from utils.observer import LoggingObserver, TokenUsageObserver   # 👈 thêm
+from utils.observer import LoggingObserver, TokenUsageObserver  
 
 
 def build_agent() -> Agent:
