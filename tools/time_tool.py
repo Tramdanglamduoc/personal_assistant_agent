@@ -33,10 +33,10 @@ class TimeTool(BaseTool):
             "name": "time",
             "description": "Get the current time for a given timezone.",
             "parameters": {
-                "type": "object",
+                "type_": "OBJECT",
                 "properties": {
                     "timezone": {
-                        "type": "string",
+                        "type_": "STRING",
                         "description": (
                             "IANA timezone name, for example "
                             "'UTC', 'Europe/Riga', 'Asia/Tokyo', or 'America/New_York'"

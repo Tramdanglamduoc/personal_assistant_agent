@@ -60,18 +60,18 @@ class TranslatorTool(BaseTool):
             "name": "translator",
             "description": "Translate text from one language to another.",
             "parameters": {
-                "type": "object",
+                "type_": "OBJECT",
                 "properties": {
                     "text": {
-                        "type": "string",
+                        "type_": "STRING",
                         "description": "The text to translate"
                     },
                     "source_lang": {
-                        "type": "string",
+                        "type_": "STRING",
                         "description": "Source language code, for example 'en', 'vi', or 'auto'"
                     },
                     "target_lang": {
-                        "type": "string",
+                        "type_": "STRING",
                         "description": "Target language code, for example 'en', 'vi', 'fr'"
                     }
                 },

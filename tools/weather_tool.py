@@ -76,10 +76,10 @@ class WeatherTool(BaseTool):
             "name": "weather",
             "description": "Get the current weather for a city.",
             "parameters": {
-                "type": "object",
+                "type_": "OBJECT",
                 "properties": {
                     "city": {
-                        "type": "string",
+                        "type_": "STRING",
                         "description": "The city name, for example 'Riga' or 'Tokyo'"
                     }
                 },

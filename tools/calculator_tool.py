@@ -30,10 +30,10 @@ class CalculatorTool(BaseTool):
             "name": "calculator",
             "description": "Evaluate a mathematical expression.",
             "parameters": {
-                "type": "object",
+                "type_": "OBJECT",
                 "properties": {
                     "expression": {
-                        "type": "string",
+                        "type_": "STRING",
                         "description": "Mathematical expression to evaluate"
                     }
                 },

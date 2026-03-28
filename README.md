@@ -50,7 +50,7 @@ You must set the `GEMINI_API_KEY` environment variable before running the main p
 Run this once in PowerShell:
 
 ```powershell
-set GEMINI_API_KEY "YOUR_API_KEY"
+setx GEMINI_API_KEY "YOUR_API_KEY"
 ```
 
 **Notes: "YOUR_API_KEY" can get Gemini API key from Google AI Studio**
@@ -465,6 +465,40 @@ The main goal is to verify:
 - The tool runs without errors
 - Proper error handling is implemented**
 - Valid translations return non-empty results
+
+---
+### Manual Test: Run the full agent flow
+
+```powershell
+python -m tests.test_agent
+```
+
+This manual test checks whether the complete assistant architecture works together, including:
+- Agent initialization
+- MemoryManager integration
+- ToolRegistry integration
+- Gemini direct response generation
+- tool calling through the registered tools
+- final response generation after tool execution
+
+The test runs the following example prompts:
+- Hello
+- What is 12 * 8 + 1?
+- What time is it in Europe/Riga?
+- Translate 'Good night' to Vietnamese.
+- Read tests/notes.txt
+
+Example output may include:
+- a direct greeting response
+- the result of a calculator query
+- the current time in a requested timezone
+- a translation result
+- the contents of a local text file
+
+**Note:**
+- The exact responses may vary depending on the model output.
+- Response speed may be slower than individual tool tests because the full agent may perform multiple model calls and tool-calling steps.
+
 
 ## Key Design Concepts
 - ReAct Pattern (Reason–Act–Observe)

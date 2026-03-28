@@ -74,10 +74,10 @@ class FileReaderTool(BaseTool):
             "name": "file_reader",
             "description": "Read the contents of a local text-based file.",
             "parameters": {
-                "type": "object",
+                "type_": "OBJECT",
                 "properties": {
                     "file_path": {
-                        "type": "string",
+                        "type_": "STRING",
                         "description": "Path to a local file such as 'notes.txt'"
                     }
                 },

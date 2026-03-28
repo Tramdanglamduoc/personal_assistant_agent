@@ -14,9 +14,15 @@ class Agent:
         self.registry = registry
 
         genai.configure(api_key=GEMINI_API_KEY)
+
+        declarations = self.registry.get_all_declarations()
+
+        for declaration in declarations:
+            print(declaration)
+        
         self.model = genai.GenerativeModel(
             model_name=MODEL_NAME,
-            tools=self.registry.get_all_declarations()
+            tools=declarations
         )
 
     def handle_user_input(self, user_input: str) -> str:
